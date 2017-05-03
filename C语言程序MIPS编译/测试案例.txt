@@ -1,0 +1,37 @@
+int n=0;
+int sum=0;
+for(n=1;n<=100;n++)
+{
+    sum=sum+n;   
+}
+
+3
+a
+	addi $a0, $zero, 101
+	addi $a1, $zero, 0
+	addi $t0, $zero, 0
+loop:   addi $t0, $t0, 1
+	slt  $t1, $t0,   $a0
+	beq  $t1, $a1,   end
+	add  $t2, $t2,   $t0
+	j    loop
+end:	
+	sw   $t2,0($sp)
+0
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+
