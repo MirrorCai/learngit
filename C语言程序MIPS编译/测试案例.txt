@@ -1,37 +1,36 @@
-int n=0;
-int sum=0;
-for(n=1;n<=100;n++)
-{
-    sum=sum+n;   
-}
+void main(int*z, int x, int y) 
+{ 
+　　*z += sub(x, y); 
+} 
+int sub(int n, int m) 
+{ 
+　　return m-n; 
+}?
 
-3
-a
-	addi $a0, $zero, 101
-	addi $a1, $zero, 0
-	addi $t0, $zero, 0
-loop:   addi $t0, $t0, 1
-	slt  $t1, $t0,   $a0
-	beq  $t1, $a1,   end
-	add  $t2, $t2,   $t0
-	j    loop
-end:	
-	sw   $t2,0($sp)
-0
-t
-t
-t
-t
-t
-t
-t
-t
-t
-t
-t
-t
-t
-t
-t
-t
 
+s0 -> z
+s1 -> x
+s2 -> y
+
+
+addi	$sp,$sp,-12
+sw	$ra,8($sp)	#保存函数返回地址
+sw	$t0,4($sp)	#保存z里面的数据
+sw	$t1,0($sp)	#保存做差结果
+
+main:
+lw	$t0,0($s0)      #取出z里面的内容
+jal	sub
+add	$t0,$t0,$t1	#z加上差值
+sw	$t0,0($s0)      #更新z里面的内容
+
+sw	$ra,8($sp)	#取出函数返回地址
+sw	$t0,4($sp)	#取出z里面的数据
+sw	$t1,0($sp)	#取出做差结果
+addi	$sp,$sp,12
+exit
+·····················
+
+sub:
+sub	$t1,$s1,$s2	#参数做差
+jr	$ra		#跳回原地址
